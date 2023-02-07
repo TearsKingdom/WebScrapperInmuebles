@@ -14,7 +14,7 @@ with sync_playwright() as p:
     #Calculamos el número de páginas que hay para esta búsqueda
     numero_pags = soup.find('h1').text
     numero_pags = numero_pags[0:numero_pags.find(' ')]
-    numero_pags = str(math.ceil(int(numero_pags.replace(',',''))/muestra))
+    numero_pags = math.ceil(int(numero_pags.replace(',',''))/muestra)
     #Crea la lista con los links de las propiedades
     
     propiedades = ['https://www.inmuebles24.com'+i["data-to-posting"] for i in soup.find_all("div") if i.has_attr( "data-to-posting")]
